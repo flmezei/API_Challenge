@@ -153,4 +153,4 @@ e-mail com o resumo do pedido nele em seu MailTrap.
 
 ## 🎁 Expressões de gratidão
 
-* Foi um prazer desenvolver essa API RESTFull.
+* Foi um prazer desenvolver essa API RESTFul.
