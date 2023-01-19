@@ -1,6 +1,6 @@
-# API RESTFull Challenge
+# API RESTFul Challenge
 
-Implementação de uma API RESTFull, para o gerenciamento de pedidos de uma pastelaria utilizando o framework Laravel.
+Implementação de uma API RESTFul, para o gerenciamento de pedidos de uma pastelaria utilizando o framework Laravel.
 
 ## 🚀 Começando
 
@@ -140,7 +140,7 @@ Importante lembrar que ao rodar a migration somente a tabela Product foi populad
 
 Basta ir em Customers, depois em Register e apertar SEND que a requisição do endpoint sera feita devolvendo uma resposta no formato JSON em todas elas.
 
-Os proximos passos e a continuação dos testes fazendo o mesmo processo em todos os metodos da colection.
+Os proximos passos e a continuação dos testes fazendo o mesmo processo em todos os metodos da collection.
 
 Segue a imagem da nossa Collection:
 
