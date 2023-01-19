@@ -1,67 +1,184 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# API RESTFull Challenge
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Implementação de uma API RESTFull, para o gerenciamento de pedidos de uma pastelaria utilizando o framework Laravel.
 
-## About Laravel
+## 🚀 Começando
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 📋 Pré-requisitos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Sistemas que você precisa para ter instalado em sua maquina local.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+ - PHP 8.1.9
+ - Laravel 9
+ - MySQL 5.7
+ - Composer
+ - Apache ou Nginx
+ - MailTrap
+ - Postman
+ - Gerenciador de Banco de Dados de sua preferência
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🔧 Instalação
 
-## Laravel Sponsors
+Neste primeiro momento vamos fazer um clone do projeto para sua maquina.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Abra um terminal, vá para a pasta em que aloca seus projetos.
 
-### Premium Partners
+Após isso digite no terminal:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```
+git clone https://github.com/flmezei/API_challenge.git
+```
 
-## Contributing
+Aguarde finalizar o clone do projeto.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Após finalizado, abra o projeto clonado em sua IDE de preferencia.
 
-## Code of Conduct
+Neste primeiro momento abra um novo terminal na pasta do projeto clonado e digite o seguinte comando:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+composer install
+```
+Aguarde a finalização da instalação do composer.
 
-## Security Vulnerabilities
+Neste Projeto em especifico utilizei para criar o CRUD dele o L5 Repository.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Então vamos digitar o comando:
 
-## License
+```
+composer require prettus/l5-repository
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# Challenge_API
+Com esse comando o L5 sera instalado em nosso projeto.
+
+Para saber mais sobre consulte **https://github.com/andersao/l5-repository**
+
+Verifique se no arquivo config/app.php em Providers esta incluida a classe:
+
+```
+'providers' => [
+    ...
+    Prettus\Repository\Providers\RepositoryServiceProvider::class,
+],
+```
+Caso não, adicione a classe no arquivo.
+
+Se for necessario adicionar a classe, teremos que fazer um publish, digitando o comando:
+
+```
+php artisan vendor:publish --provider "Prettus\Repository\Providers\RepositoryServiceProvider"
+```
+
+Feito isso nosso ambiente esta quase configurado por completo.
+
+Vamos as configurações do arquivo .env
+
+No projeto clonado em sua maquina você irá encontrar um arquivo .env.example, no qual você deve duplica-lo e renomear esse novo arquivo para .env somente.
+
+Após isso vamos configurar dentro no .env nossa conexão com banco de dados
+
+Segue o exemplo do meu arquivo:
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=challenge_api
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Mais abaixo vamos inserir as configurações SMTP para envio de emails.
+
+Estamos configurando pois nossa API irá disparar emails conforme seja feito uma nova requisição de pedidos.
+Portanto precisamos testar os recebimentos de email disparados por nossa API.
+Neste caso estou utilizando o MailTrap que ajuda muito.
+
+Para saber mais e criar uma conta gratuita consulte **https://mailtrap.io/home**
+
+Após criar sua conta o MailTrap ja envia um primeiro email para sua caixa de menssagem aonde você encontrará as configurações 
+do seu login para você adicionar no seu arquivo .env.
+
+![image](https://user-images.githubusercontent.com/96137765/213336653-d7a84723-5dc6-4034-a719-a4ffeab88292.png)
+
+
+Em Integration selecione Laravel 7+
+
+![image](https://user-images.githubusercontent.com/96137765/213337104-b2a10329-c7e3-4d22-b4e8-cd62c8d1a086.png)
+
+
+Será gerado as configuraçõe para seu usuario
+
+Parecida com as minhas configurações, porém MAIL_USERNAME e
+MAIL_PASSWORD serão os seus. Copie e cole em seu arquivo .env
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=#############
+MAIL_PASSWORD=#############
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+Após termos configurado nosso arquivo .env vamos aos proximos passos.
+
+!!Importante!! Deixe seu arquivo .env e o .env.example exatamente iguais para o funcionamento da aplicação.
+
+Após isso vamos subir nosso serviço rodando o codigo no terminal:
+
+```
+php artisan server
+```
+Após isso você precisará abrir um novo terminal, ja que o serviço estará usando o antigo terminal.
+
+Abra seu Gerenciador de Banco de Dados e crie uma conexão MySQL com os dados de conexão do seu arquivo .env
+
+Após isso!!
+
+Agora vamos rodar nossas Migrations e nosso Seed executando o comando:
+
+```
+php artisan migrate --seed
+```
+Para que seja criada nossas tabelas em nosso banco de dados e o Seed cria dados "fake" para popular a tabela Products da nossa API.
+
+
+##Pronto nosso ambiente esta configurado e nossa API está funcional##
+
+
+## ⚙️ Executando os testes
+
+Para executarmos os testes iremos usar o Postman.
+
+### 🔩 Está é a collection com todo o teste ja configurado para testar a API 
+
+Basta abrir o Postman e importar o arquivo da collection da API
+
+[API Pastelaria.postman_collection.zip](https://github.com/flmezei/API_challenge/files/10452899/API.Pastelaria.postman_collection.zip)
+
+Após importar a collection você verá a API_Pastelaria Collection aonde temos Customers, Orders e Products com seus respectivos testes para endpoints da API.
+
+Importante lembrar que ao rodar a migration somente a tabela Product foi populada, porem pode ser testada incluindo novos itens nela.
+
+Basta ir em Customers, depois em Register e apertar SEND que a requisição do endpoint sera feita devolvendo uma resposta no formato JSON em todas elas.
+
+Os proximos passos e a continuação dos testes fazendo o mesmo processo em todos os metodos da colection.
+
+Segue a imagem da nossa Collection:
+
+![image](https://user-images.githubusercontent.com/96137765/213339774-677a75b3-c812-4d16-a546-dcb170961d2d.png)
+
+
+Se configurado corretamente como expliquei no inicio o arquivo .env, na parte do SMTP, quando você criar pelo Postman um Order(Register), sera disparado um 
+e-mail com o resumo do pedido nele em seu MailTrap.
+
+
+## 🎁 Expressões de gratidão
+
+* Foi um prazer desenvolver essa API RESTFull.
