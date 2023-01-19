@@ -44,34 +44,6 @@ composer install
 ```
 Aguarde a finalização da instalação do composer.
 
-Neste Projeto em especifico utilizei para criar o CRUD dele o L5 Repository.
-
-Então vamos digitar o comando:
-
-```
-composer require prettus/l5-repository
-```
-
-Com esse comando o L5 sera instalado em nosso projeto.
-
-Para saber mais sobre consulte **https://github.com/andersao/l5-repository**
-
-Verifique se no arquivo config/app.php em Providers esta incluida a classe:
-
-```
-'providers' => [
-    ...
-    Prettus\Repository\Providers\RepositoryServiceProvider::class,
-],
-```
-Caso não, adicione a classe no arquivo.
-
-Se for necessario adicionar a classe, teremos que fazer um publish, digitando o comando:
-
-```
-php artisan vendor:publish --provider "Prettus\Repository\Providers\RepositoryServiceProvider"
-```
-
 Feito isso nosso ambiente esta quase configurado por completo.
 
 Vamos as configurações do arquivo .env
